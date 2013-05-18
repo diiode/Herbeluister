@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string-array name="station_names">
+        <item>MNM</item>
+        <item>Radio 1</item>
+        <item>Radio 2</item>
+        <item>StuBru</item>
+    </string-array>
+    
+    <string-array name="main_menu_other">
+        <item>Downloads</item>
+        <item>Radio</item>
+    </string-array>
+    
+    <string-array name="stations">
+        <item>mnm_shows</item>
+        <item>radio1_shows</item>
+        <item>radio2_shows</item>
+        <item>stubru_shows</item>
+    </string-array>
+    
+
+    <string-array name="mnm_shows">
+        <item>MNM 1</item>
+        <item>MNM 2</item>
+        <item>MNM 3</item>
+        <item>MNM 4</item>
+    </string-array>
+    
+    <string-array name="radio1_shows">
+        <item>Radio1 1</item>
+        <item>Radio1 2</item>
+        <item>Radio1 3</item>
+        <item>Radio1 4</item>
+    </string-array>
+    
+        <string-array name="radio2_shows">
+        <item>Radio2 1</item>
+        <item>Radio2 2</item>
+        <item>Radio2 3</item>
+        <item>Radio2 4</item>
+    </string-array>
+    
+    <string-array name="stubru_shows">
+        <item>StuBru 1</item>
+        <item>StuBru 2</item>
+        <item>StuBru 3</item>
+        <item>StuBru 4</item>
+    </string-array>
+    
+</resources>

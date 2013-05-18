@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <item android:id="@+id/radio"
+        android:showAsAction="always"
+        android:title="@string/radio_label"
+        android:visible="true">
+        
+    </item>
+        
+</menu>

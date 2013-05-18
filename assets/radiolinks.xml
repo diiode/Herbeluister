@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<radiostations>
+    <radios>
+        <radio station = "Klara">
+		    <stationdetail>Klara</stationdetail>
+		    <url>http://mp3.streampower.be/klara-high.mp3</url>
+		</radio>
+		<radio station = "Klara">
+		    <stationdetail>Klara continuo</stationdetail>
+		    <url>http://mp3.streampower.be/klaracontinuo-high.mp3</url>
+		</radio>
+		<radio station = "MNM">
+		    <stationdetail>MNM</stationdetail>
+		    <url>http://mp3.streampower.be/mnm-high.mp3</url>
+		</radio>
+		<radio station = "MNM">
+		    <stationdetail>MNM Hits</stationdetail>
+		    <url>http://mp3.streampower.be/mnm_hits-high.mp3</url>
+		</radio>
+		<radio station = "Nieuws plus">
+		    <stationdetail>Nieuws plus</stationdetail>
+		    <url>http://download.streampower.be/vrt/radio1/11_11niws-snip_hi.mp3</url>
+	    </radio>
+		<radio station="Radio 1">
+		    <stationdetail>Radio 1</stationdetail>
+		    <url>http://mp3.streampower.be/radio1-high.mp3</url>
+		</radio>
+		<radio station = "Radio 2">
+		    <stationdetail>Radio 2 Antwerpen</stationdetail>
+		    <url>http://mp3.streampower.be/ra2ant-high.mp3</url>
+		</radio>	
+		<radio station = "Radio 2">
+		    <stationdetail>Radio 2 Vlaams Brabant</stationdetail>
+		    <url>http://mp3.streampower.be/ra2vlb-high.mp3</url>
+		</radio>		
+		<radio station = "Radio 2">
+		    <stationdetail>Radio 2 Limburg</stationdetail>
+		    <url>http://mp3.streampower.be/ra2lim-high.mp3</url>
+		</radio>		
+		<radio station = "Radio 2">
+		    <stationdetail>Radio 2 Oost-Vlaanderen</stationdetail>
+		    <url>http://mp3.streampower.be/ra2ovl-high.mp3</url>
+		</radio>
+		<radio station = "Radio 2">
+		    <stationdetail>Radio 2 West-Vlaanderen</stationdetail>
+		    <url>http://mp3.streampower.be/ra2wvl-high.mp3</url>
+		</radio>
+		<radio station = "Radio Vlaanderen">
+		    <stationdetail>Radio Vlaanderen Info</stationdetail>
+		    <url>http://mp3.streampower.be/rvi-high.mp3</url>
+		</radio>
+		<radio station = "Radio Vlaanderen">
+		    <stationdetail>Radio Vlaanderen</stationdetail>
+		    <url>http://mp3.streampower.be/rv-high.mp3 3</url>
+		</radio>
+		<radio station = "Studio Brussel">
+		    <stationdetail>Studio Brussel</stationdetail>
+		    <url>http://mp3.streampower.be/stubru-high.mp3</url>
+		</radio>
+	</radios>
+</radiostations>
