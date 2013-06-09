@@ -1,25 +1,19 @@
 package be.bartdewallef.herbeluister;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.TreeSet;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockListFragment;
 
 public class MainMenuFragment extends SherlockListFragment{
@@ -145,19 +139,23 @@ public class MainMenuFragment extends SherlockListFragment{
             return TYPE_MAX_COUNT;
         }
 
-        public int getCount() {
+        @Override
+		public int getCount() {
             return mData.size();
         }
 
-        public String getItem(int position) {
+        @Override
+		public String getItem(int position) {
             return mData.get(position);
         }
 
-        public long getItemId(int position) {
+        @Override
+		public long getItemId(int position) {
             return position;
         }
 
-        public View getView(int position, View convertView, ViewGroup parent) {
+        @Override
+		public View getView(int position, View convertView, ViewGroup parent) {
             ViewHolder holder = null;
             int type = getItemViewType(position);
             System.out.println("getView " + position + " " + convertView + " type = " + type);

@@ -8,29 +8,22 @@ import java.util.List;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.SherlockActivity;
-import com.actionbarsherlock.app.SherlockFragment;
-import com.actionbarsherlock.app.SherlockListFragment;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
-import com.slidingmenu.lib.SlidingMenu;
-import com.slidingmenu.lib.app.SlidingFragmentActivity;
-
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
+
+import com.actionbarsherlock.app.SherlockListFragment;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 
 public class ShowOverviewActivity extends SlidingFragmentActivity{
 	
@@ -92,16 +85,16 @@ public class ShowOverviewActivity extends SlidingFragmentActivity{
 		if (mContent == null)
 			mContent = ShowListFragment.newInstance(radiostations, 0);
 		getSupportFragmentManager()
-		.beginTransaction()
-		.replace(R.id.content_frame, mContent)
-		.commit();
+			.beginTransaction()
+			.replace(R.id.content_frame, mContent)
+			.commit();
 		
 		// set the Behind View Fragment
 		setBehindContentView(R.layout.menu_frame);
 		mFrag = MainMenuFragment.newInstance(radiostations);
 		getSupportFragmentManager().beginTransaction()
-		.replace(R.id.menu_frame, mFrag)
-		.commit();
+			.replace(R.id.menu_frame, mFrag)
+			.commit();
 		
 		// customizing slidingmenu
 		SlidingMenu sm = getSlidingMenu();
@@ -150,11 +143,12 @@ public class ShowOverviewActivity extends SlidingFragmentActivity{
 	public void switchContent(final Fragment fragment) {
 		mContent = (SherlockListFragment) fragment;
 		getSupportFragmentManager()
-		.beginTransaction()
-		.replace(R.id.content_frame, mContent)
-		.commit();
+			.beginTransaction()
+			.replace(R.id.content_frame, mContent)
+			.commit();
 		Handler h = new Handler();
 		h.postDelayed(new Runnable() {
+			@Override
 			public void run() {
 				getSlidingMenu().showContent();
 			}

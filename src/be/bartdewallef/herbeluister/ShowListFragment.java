@@ -2,28 +2,23 @@ package be.bartdewallef.herbeluister;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.content.CursorLoader;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.provider.BaseColumns;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
+import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
@@ -110,10 +105,11 @@ public class ShowListFragment extends SherlockListFragment implements LoaderCall
 		return inflater.inflate(R.layout.list, null);
 	}
 
+	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		
-		String[] projection = {ShowTable._ID, ShowTable.SHOW_NAME};
+		String[] projection = {BaseColumns._ID, ShowTable.SHOW_NAME};
 		String[] uiBindFrom = {ShowTable.SHOW_NAME};
 		int[] uiBindTo = {android.R.id.text1};
 		
@@ -158,7 +154,7 @@ public class ShowListFragment extends SherlockListFragment implements LoaderCall
 	@Override
 	public Loader<Cursor> onCreateLoader(int arg0, Bundle arg1) {
 		
-		String[] projection = {ShowTable._ID, ShowTable.SHOW_NAME};
+		String[] projection = {BaseColumns._ID, ShowTable.SHOW_NAME};
 		String[] uiBindFrom = {ShowTable.SHOW_NAME};
 		int[] uiBindTo = {android.R.id.text1};
 		

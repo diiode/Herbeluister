@@ -4,6 +4,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import android.content.ContentProvider;
@@ -17,6 +18,7 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
+import android.provider.BaseColumns;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -44,31 +46,16 @@ public class ShowsContentProvider extends ContentProvider {
 
 		private Context myContext;
 		private SQLiteDatabase myDatabase;
-		private static final String DATABASE_PATH = "/data/data/be.bartdewallef.herbeluister/databases/";
+		private String DATABASE_PATH = "";
 		private static final String DATABASE_NAME = "radioshows.db";
 		private static final int DATABASE_VERSION = 1;
 		
 		DatabaseHelper(Context context) {
 			super(context, DATABASE_NAME, null, DATABASE_VERSION);
+			//TODO: test for multiple API versions. Original: DB_PATH = "/data/data/" + context.getPackageName() + "/databases/";
+			DATABASE_PATH = context.getApplicationInfo().dataDir + "/databases/";
+			
 			this.myContext = context;
-		}
-
-		@Override
-		public void onCreate(SQLiteDatabase database) {
-			/*
-			database.execSQL("CREATE TABLE " + table
-					+ " (" + ShowTable._ID + "INTEGER PRIMARY KEY,"
-					+ ShowTable.SHOW_NAME + " TEXT,"
-					+ ShowTable.SHOW_DESCRIPTION + " TEXT,"
-					+ ShowTable.SHOW_DESCRIPTION64 + " TEXT,"
-					+ ShowTable.SHOW_CONTENTS + " TEXT,"
-					+ ShowTable.SHOW_WEBSITEURL + " TEXT,"
-					+ ShowTable.SHOW_PRESENTER + " TEXT,"
-					+ ShowTable.SHOW_SCHEDULING + " TEXT,"
-					+ ShowTable.SHOW_STREAMURL + " TEXT,"
-					+ ShowTable.SHOW_EMAIL + " TEXT"
-					+ ");");	
-			*/
 		}
 
 		@Override
@@ -129,11 +116,16 @@ public class ShowsContentProvider extends ContentProvider {
 		
 		private void copyDatabase() throws IOException {
 			 //Open your local db as the input stream
+			String[] assetslist = myContext.getAssets().list("");
+			Log.d(TAG, "Assets:");
+			for (String asset : assetslist) {
+				Log.d(TAG, asset);
+			}
 			InputStream myInput = myContext.getAssets().open(DATABASE_NAME);
-			 
+			
 			// Path to the just created empty db
 			String outFileName = DATABASE_PATH + DATABASE_NAME;
-			 
+			Log.d(TAG, outFileName);
 			//Open the empty db as the output stream
 			OutputStream myOutput = new FileOutputStream(outFileName);
 			 
@@ -143,6 +135,7 @@ public class ShowsContentProvider extends ContentProvider {
 			while ((length = myInput.read(buffer))>0){
 				myOutput.write(buffer, 0, length);
 			}
+			Log.d(TAG, "Copy finished");
 			 
 			//Close the streams
 			myOutput.flush();
@@ -155,6 +148,12 @@ public class ShowsContentProvider extends ContentProvider {
 			//Open the database
 			String myPath = DATABASE_PATH + DATABASE_NAME;
 			myDatabase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY); 
+		}
+
+		@Override
+		public void onCreate(SQLiteDatabase db) {
+			// TODO Auto-generated method stub
+			
 		}	
 	}
 
@@ -170,7 +169,7 @@ public class ShowsContentProvider extends ContentProvider {
     	
     	case MNM_ID:
     		String id = uri.getLastPathSegment();
-            count = db.delete(ShowTable.MNM.BASE_PATH, ShowTable._ID + "=" + id
+            count = db.delete(ShowTable.MNM.BASE_PATH, BaseColumns._ID + "=" + id
                     + (!TextUtils.isEmpty(where) ? " AND (" + where + ')' : ""), whereArgs);
     		break;
     	
@@ -180,7 +179,7 @@ public class ShowsContentProvider extends ContentProvider {
     	
     	case RADIO1_ID:
     		String id1 = uri.getLastPathSegment();
-            count = db.delete(ShowTable.Radio1.BASE_PATH, ShowTable._ID + "=" + id1
+            count = db.delete(ShowTable.Radio1.BASE_PATH, BaseColumns._ID + "=" + id1
                     + (!TextUtils.isEmpty(where) ? " AND (" + where + ')' : ""), whereArgs);
     		break;
     			
@@ -190,7 +189,7 @@ public class ShowsContentProvider extends ContentProvider {
     	
     	case RADIO2_ID:
     		String id2 = uri.getLastPathSegment();
-            count = db.delete(ShowTable.Radio2.BASE_PATH, ShowTable._ID + "=" + id2
+            count = db.delete(ShowTable.Radio2.BASE_PATH, BaseColumns._ID + "=" + id2
                     + (!TextUtils.isEmpty(where) ? " AND (" + where + ')' : ""), whereArgs);
     		break;
     	
@@ -200,7 +199,7 @@ public class ShowsContentProvider extends ContentProvider {
     	
     	case STUBRU_ID:
     		String id3 = uri.getLastPathSegment();
-            count = db.delete(ShowTable.StuBru.BASE_PATH, ShowTable._ID + "=" + id3
+            count = db.delete(ShowTable.StuBru.BASE_PATH, BaseColumns._ID + "=" + id3
                     + (!TextUtils.isEmpty(where) ? " AND (" + where + ')' : ""), whereArgs);
     		break;
     			
@@ -301,28 +300,28 @@ public class ShowsContentProvider extends ContentProvider {
         	break;
         case MNM_ID:
         	qb.setTables(ShowTable.MNM.BASE_PATH);
-        	qb.appendWhere(ShowTable._ID + "=" + uri.getLastPathSegment());
+        	qb.appendWhere(BaseColumns._ID + "=" + uri.getLastPathSegment());
         	break;
         case RADIO1_SHOWS:
         	qb.setTables(ShowTable.Radio1.BASE_PATH);
         	break;
         case RADIO1_ID:
         	qb.setTables(ShowTable.Radio1.BASE_PATH);
-        	qb.appendWhere(ShowTable._ID + "=" + uri.getLastPathSegment());
+        	qb.appendWhere(BaseColumns._ID + "=" + uri.getLastPathSegment());
         	break;
         case RADIO2_SHOWS:
         	qb.setTables(ShowTable.Radio2.BASE_PATH);
         	break;
         case RADIO2_ID:
         	qb.setTables(ShowTable.Radio2.BASE_PATH);
-        	qb.appendWhere(ShowTable._ID + "=" + uri.getLastPathSegment());
+        	qb.appendWhere(BaseColumns._ID + "=" + uri.getLastPathSegment());
         	break;
         case STUBRU_SHOWS:
         	qb.setTables(ShowTable.StuBru.BASE_PATH);
         	break;
         case STUBRU_ID:
         	qb.setTables(ShowTable.StuBru.BASE_PATH);
-        	qb.appendWhere(ShowTable._ID + "=" + uri.getLastPathSegment());
+        	qb.appendWhere(BaseColumns._ID + "=" + uri.getLastPathSegment());
         	break;
         default:
         	throw new IllegalArgumentException("Unknown URI " + uri);
@@ -356,7 +355,7 @@ public class ShowsContentProvider extends ContentProvider {
 		
 
 		showsProjectionMap = new HashMap<String, String>();
-		showsProjectionMap.put(ShowTable._ID, ShowTable._ID);
+		showsProjectionMap.put(BaseColumns._ID, BaseColumns._ID);
 		showsProjectionMap.put(ShowTable.SHOW_NAME, ShowTable.SHOW_NAME);
 		showsProjectionMap.put(ShowTable.SHOW_DESCRIPTION, ShowTable.SHOW_DESCRIPTION);
 		showsProjectionMap.put(ShowTable.SHOW_DESCRIPTION64, ShowTable.SHOW_DESCRIPTION64);

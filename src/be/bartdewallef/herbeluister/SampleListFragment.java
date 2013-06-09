@@ -13,10 +13,12 @@ import android.widget.TextView;
 
 public class SampleListFragment extends ListFragment {
 
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.list, null);
 	}
 
+	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		SampleAdapter adapter = new SampleAdapter(getActivity());
@@ -43,6 +45,7 @@ public class SampleListFragment extends ListFragment {
 			super(context, 0);
 		}
 
+		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			if (convertView == null) {
 				convertView = LayoutInflater.from(getContext()).inflate(R.layout.row_icon_title, null);
