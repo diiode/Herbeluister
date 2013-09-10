@@ -61,6 +61,7 @@ public class ShowOverviewActivity extends SlidingFragmentActivity{
 				}
 		}
 		
+		// will be overriden by fragment
 		setTitle(R.string.title_show_overview);
 		
 		// check if the content frame contains the menu frame
@@ -80,14 +81,15 @@ public class ShowOverviewActivity extends SlidingFragmentActivity{
 		
 		// set contentframe
 		setContentView(R.layout.content_frame);
-		if (savedInstanceState != null)
-			mContent = (SherlockListFragment) getSupportFragmentManager().getFragment(savedInstanceState, "mContent");
-		if (mContent == null)
+		if (savedInstanceState != null){
+			mContent = (ShowListFragment) getSupportFragmentManager().getFragment(savedInstanceState, "mContent");
+		} else  {
 			mContent = ShowListFragment.newInstance(radiostations, 0);
-		getSupportFragmentManager()
-			.beginTransaction()
-			.replace(R.id.content_frame, mContent)
-			.commit();
+			getSupportFragmentManager()
+				.beginTransaction()
+				.replace(R.id.content_frame, mContent)
+				.commit();
+		}
 		
 		// set the Behind View Fragment
 		setBehindContentView(R.layout.menu_frame);

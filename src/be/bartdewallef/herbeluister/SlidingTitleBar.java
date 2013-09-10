@@ -16,7 +16,7 @@ public class SlidingTitleBar extends BaseActivity {
 		setContentView(R.layout.content_frame);
 		getSupportFragmentManager()
 		.beginTransaction()
-		.replace(R.id.content_frame, new ShowListFragment(0))
+		.replace(R.id.content_frame, new ShowListFragment())
 		.commit();
 		
 		setSlidingActionBarEnabled(true);

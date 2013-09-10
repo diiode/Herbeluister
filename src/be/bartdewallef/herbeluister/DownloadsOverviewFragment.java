@@ -26,7 +26,13 @@ public class DownloadsOverviewFragment extends SherlockListFragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		setTitle();
+		
 		return inflater.inflate(R.layout.list, null);
+	}
+
+	private void setTitle() {
+		((ShowOverviewActivity) getActivity()).setTitle(R.string.download_title);		
 	}
 
 	@Override

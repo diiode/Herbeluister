@@ -6,6 +6,8 @@
     <string name="menu_settings">Settings</string>
     <string name="main_menu_shows_title">RADIO SHOWS</string>
     <string name="main_menu_other_title">ANDERE OPTIES</string>
+    <string name="download_title">Downloads</string>
+    <string name="radio_title">Radio</string>
     
     <string name="title_show_overview">Programma overzicht</string>
     <string name="download_subdir">Herbeluister</string>
@@ -26,6 +28,7 @@
     <string name="stream_label">Stream</string>
     <string name="download_label">Download</string>
     <string name="radio_label">Radio</string>
+    
 
     <string name="github">GitHub</string>
     <string name="github_label">SlidingMenu on GitHub</string>

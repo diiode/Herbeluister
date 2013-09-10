@@ -30,12 +30,17 @@ public class RadioFragment extends SherlockListFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		radiostations = (RadioStations) getArguments().getSerializable("radiostations");
 		Log.d(TAG, radiostations.radios.get(0).getStationdetail());	
-
 		mAdapter = new DoubleListAdpater(getActivity(), radiostations.radios);
 		setListAdapter(mAdapter);
+		setTitle();
 		return inflater.inflate(R.layout.list, null);
 	}
 	
+	private void setTitle() {
+		((ShowOverviewActivity) getActivity()).setTitle(R.string.radio_title);		
+	}
+
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState){
 		super.onActivityCreated(savedInstanceState);

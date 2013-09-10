@@ -38,51 +38,57 @@ public class ShowListFragment extends SherlockListFragment implements LoaderCall
 	private Radio radio;
 	
 	//TODO verplaatsen naar newinstance
-	public ShowListFragment(int pos) {
-		stationId = pos;
-		switch(pos){
-		case 0:
-			station = "MNM";
-			streamUrl = "http://mp3.streampower.be/mnm-high.mp3";
-			tableName = ShowTable.MNM.BASE_PATH;
-			contentUri = ShowTable.MNM.CONTENT_URI;
-			break;
-		case 1:
-			station = "Radio 1";
-			streamUrl = "http://mp3.streampower.be/radio1-high.mp3";
-			tableName = ShowTable.Radio1.BASE_PATH;
-			contentUri = ShowTable.Radio1.CONTENT_URI;
-			break;
-		case 2:
-			station = "Radio 2";
-			streamUrl = "http://mp3.streampower.be/ra2lim-high.mp3";
-			tableName = ShowTable.Radio2.BASE_PATH;
-			contentUri = ShowTable.Radio2.CONTENT_URI;
-			break;
-		case 3:
-			station  = "Studio Brussel";
-			streamUrl = "http://mp3.streampower.be/stubru-high.mp3";
-			tableName = ShowTable.StuBru.BASE_PATH;
-			contentUri = ShowTable.StuBru.CONTENT_URI;
-			break;
-		default:
-			break; 
-		}
-	}
+//	public ShowListFragment(int pos) {
+//		stationId = pos;
+//		switch(pos){
+//		case 0:
+//			station = "MNM";
+//			streamUrl = "http://mp3.streampower.be/mnm-high.mp3";
+//			tableName = ShowTable.MNM.BASE_PATH;
+//			contentUri = ShowTable.MNM.CONTENT_URI;
+//			break;
+//		case 1:
+//			station = "Radio 1";
+//			streamUrl = "http://mp3.streampower.be/radio1-high.mp3";
+//			tableName = ShowTable.Radio1.BASE_PATH;
+//			contentUri = ShowTable.Radio1.CONTENT_URI;
+//			break;
+//		case 2:
+//			station = "Radio 2";
+//			streamUrl = "http://mp3.streampower.be/ra2lim-high.mp3";
+//			tableName = ShowTable.Radio2.BASE_PATH;
+//			contentUri = ShowTable.Radio2.CONTENT_URI;
+//			break;
+//		case 3:
+//			station  = "Studio Brussel";
+//			streamUrl = "http://mp3.streampower.be/stubru-high.mp3";
+//			tableName = ShowTable.StuBru.BASE_PATH;
+//			contentUri = ShowTable.StuBru.CONTENT_URI;
+//			break;
+//		default:
+//			break; 
+//		}
+//	}
 
 	
 	public static ShowListFragment newInstance(RadioStations radiostations, int stationId){
-		ShowListFragment fragment = new ShowListFragment(stationId);
+		//ShowListFragment fragment = new ShowListFragment(stationId);
+		ShowListFragment fragment = new ShowListFragment();
+		fragment.setStationId(stationId);
 		Bundle bundle = new Bundle();
 		bundle.putSerializable("radiostations", radiostations);
 		fragment.setArguments(bundle);
-		
-		
 		return fragment;
 	}
 
 	
-    @Override
+    private void setTitle() {
+		((ShowOverviewActivity) getActivity()).setTitle(station);
+		
+	}
+
+
+	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
@@ -102,6 +108,7 @@ public class ShowListFragment extends SherlockListFragment implements LoaderCall
 			//radio = radiostations.radios.get(stationId);
 			
 		}
+		setTitle();
 		return inflater.inflate(R.layout.list, null);
 	}
 
@@ -208,5 +215,37 @@ public class ShowListFragment extends SherlockListFragment implements LoaderCall
 			return true;
 		}
 		else return false;
+	}
+	
+	public void setStationId(int pos){
+		stationId = pos;
+		switch(pos){
+		case 0:
+			station = "MNM";
+			streamUrl = "http://mp3.streampower.be/mnm-high.mp3";
+			tableName = ShowTable.MNM.BASE_PATH;
+			contentUri = ShowTable.MNM.CONTENT_URI;
+			break;
+		case 1:
+			station = "Radio 1";
+			streamUrl = "http://mp3.streampower.be/radio1-high.mp3";
+			tableName = ShowTable.Radio1.BASE_PATH;
+			contentUri = ShowTable.Radio1.CONTENT_URI;
+			break;
+		case 2:
+			station = "Radio 2";
+			streamUrl = "http://mp3.streampower.be/ra2lim-high.mp3";
+			tableName = ShowTable.Radio2.BASE_PATH;
+			contentUri = ShowTable.Radio2.CONTENT_URI;
+			break;
+		case 3:
+			station  = "Studio Brussel";
+			streamUrl = "http://mp3.streampower.be/stubru-high.mp3";
+			tableName = ShowTable.StuBru.BASE_PATH;
+			contentUri = ShowTable.StuBru.CONTENT_URI;
+			break;
+		default:
+			break; 
+		}
 	}
 }
