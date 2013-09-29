@@ -151,7 +151,6 @@ public class ShowListFragment extends SherlockListFragment implements LoaderCall
 	@Override
 	public void onListItemClick(ListView lv, View v, int position, long id) {
 		TextView tv = (TextView) v.findViewById(android.R.id.text1);
-		Toast.makeText(getSherlockActivity(), "Selected item = " + tv.getText(), Toast.LENGTH_SHORT).show();
 		
 		Uri detailsUri = Uri.parse(contentUri + "/" + id);
 		ShowOverviewActivity soa = (ShowOverviewActivity) getActivity();
@@ -201,9 +200,13 @@ public class ShowListFragment extends SherlockListFragment implements LoaderCall
 					e.printStackTrace();
 				}
 			} else {
-				Toast.makeText(getActivity().getApplicationContext(), "Geen netwerk connectie", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity().getApplicationContext(), "No network connection.", Toast.LENGTH_SHORT).show();
 			}
-		}
+			break;
+		case R.id.update:
+			
+			break;
+		}	
 		return super.onOptionsItemSelected(item);
 	}
 	

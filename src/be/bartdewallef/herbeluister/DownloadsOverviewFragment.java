@@ -75,7 +75,6 @@ public class DownloadsOverviewFragment extends SherlockListFragment {
 	//TODO use a service
 	public void onListItemClick(ListView lv, View v, int position, long id) {
 		TextView tv = (TextView) v.findViewById(android.R.id.text1);
-		Toast.makeText(getSherlockActivity(), "Selected item = " + tv.getText(), Toast.LENGTH_SHORT).show();
 		
 		String item = (String) getListAdapter().getItem(position);
 		File musicFile = new File(dir + File.separator + item);

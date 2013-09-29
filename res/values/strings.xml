@@ -28,6 +28,7 @@
     <string name="stream_label">Stream</string>
     <string name="download_label">Download</string>
     <string name="radio_label">Radio</string>
+    <string name="update_label">Update</string>
     
 
     <string name="github">GitHub</string>

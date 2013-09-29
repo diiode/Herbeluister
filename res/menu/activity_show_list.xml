@@ -7,5 +7,9 @@
         android:visible="true">
         
     </item>
+    <item android:id="@+id/update"
+        android:showAsAction="always"
+        android:title="@string/update_label"
+        android:visible="true" />
         
 </menu>
